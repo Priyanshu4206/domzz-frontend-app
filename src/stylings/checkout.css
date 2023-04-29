@@ -1,0 +1,173 @@
+
+.checkout_main{
+    width: 100%;
+    /* background-color: black; */
+    min-height: 100vh;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+}
+.logo img{
+    width: 200px;
+}
+.header_divider{
+    display: flex;
+    align-items: center;
+    padding: 1rem ;
+    background-color: blanchedalmond;
+}
+.header_divider a{
+    text-decoration: none;
+    color:black;
+}
+.header_divider a:hover{
+    transform: scale(1.2);
+}
+.header_divider >.sub_head{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.header_divider h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.checkout_main >.main_section .container{
+    /* background-color: greenyellow; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    gap: 2rem;
+    position: relative;
+    padding-bottom: 5rem;
+}
+.checkout_main >.main_section .container .inner_containers{
+    width: 350px;
+}
+.userDetails_input{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: rgb(29, 29, 41);
+}
+.userDetails_input h2{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: black;
+}
+.userDetails_input .input_box input{
+    border: 1px solid grey;
+    border-radius: 3px;
+    width: 100%;
+    padding: 0.8rem 0.4rem ;
+    outline: none;
+    margin-top: 5px;
+    font-size: 12px;
+}
+.otp_btn{
+    padding: 1rem;
+    border: 1px solid black;
+    background-color: green;
+    color: white;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+.userDetails_input input:focus{
+    border: 2px solid saddlebrown;
+}
+.userDetails_input input:focus label{
+    font-weight: 600;
+}
+.payment_options h2{
+    margin: 1rem;
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: black;
+}
+.payment_options .options{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.payment_options .options label{
+    border: 1px solid green;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 70px;
+}
+.options label span{
+    font-size: 1.1rem;
+}
+label .pay_pics{    
+    margin-left: auto;
+}
+.pay_pics .icons{
+    font-size: 1.5rem;
+    margin: 2px;
+}
+.userDetails_input button{
+    position: absolute;
+    bottom: 0;
+    padding: 1rem 0.4rem;
+    background-color: transparent;
+    border-radius: 8px;
+    width: 350px;
+    outline: none;
+    border: 1px solid black;
+}
+.userDetails_input button:hover{
+    transform: scale(1.04);
+    background-color: lightgreen;
+    font-weight: 500;
+    cursor: pointer;
+    color: darkgreen;
+    border: 1px solid darkgreen;
+}
+@media (max-width: 500px){
+    .checkout_main >.main_section .container .inner_containers{
+        width: 90%;
+    }
+    .userDetails_input button{
+        width: 90%;
+    }
+    .header_divider h1{
+        font-size: 1.3rem;
+    }
+.userDetails_input h2{
+    font-size: 1.2rem;
+}
+.payment_options h2{
+    font-size: 1.2rem;
+}
+.options label span{font-size: 0.9rem;}
+.pay_pics .icons{
+    font-size: 1.2rem;
+}
+}
+
+
+/* const appVerifier = window.recaptchaVerifier;
+firebase
+  .auth()
+  .signInWithPhoneNumber(Mobile, appVerifier)
+  .then((value) => {
+    setConfirmResult(value);
+    setshowOTP(true);
+    toast.success("OTP sent Succesfully !!!");
+  })
+  .catch((err) => {
+    console.log(err);
+    setshowOTP(false);
+  }); */

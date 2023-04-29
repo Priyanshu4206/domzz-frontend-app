@@ -1,0 +1,315 @@
+.order_main{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 116.4px 1fr;
+}
+.order_main .header{
+    position: fixed;
+    width: 70%;
+    background-color: whitesmoke;
+}
+.upper_head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1rem;
+    color: grey;
+}
+.header img{
+    width: 250px;
+    cursor: pointer;
+}
+.header img:hover{
+    width: 260px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    box-shadow: inset 0 0 10px rgb(142, 135, 135);
+}
+nav .menu_options{
+    display: flex;
+    list-style: none;
+}
+nav .menu_options a{
+    font-size: 1.2rem;
+    padding: 1rem;
+    cursor: pointer;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+nav .menu_options a:hover{
+    background-color: coral;
+}
+nav .menu_options .active{
+    background-color: brown;
+    color: white;
+}
+.side_menu_btn,.basket_platform .close_btn{
+    display: none;
+}
+.order_main .display_platform{
+    grid-column: 1;
+    grid-row: 2;
+    background-color: whitesmoke;
+    padding: 1rem;
+    box-shadow: inset 0 0 10px rgb(142, 135, 135);
+}
+.order_main .basket_platform{
+    background-color: blanchedalmond;
+    grid-row: span 2;
+    box-shadow: inset 0 0 10px rgb(142, 135, 135);
+    position: fixed;
+    height: 100vh;
+    right: 0;
+    width: 30%;
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.basket_platform h1{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.basket_platform .cart_list{
+    list-style: none;
+    overflow-y:scroll ;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    box-shadow: inset 0 0 10px rgb(142, 135, 135);
+    padding: 1vw;
+    margin: 1rem;
+    background-color: whitesmoke;
+    flex: 0.8;
+}
+.basket_platform .cart_list::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.cart_list li{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+.cart_list li .title{
+    flex: 0.8;
+    color: grey;
+    font-size: 0.8rem;
+}
+.cart_list .cross_btn:hover{
+    cursor: pointer;
+    transform: rotateZ(90deg);
+}
+.title strong{
+    color: black;
+    font-size: 1rem;
+}
+
+.payemnt_det{
+    box-shadow: inset 0 0 10px rgb(142, 135, 135);   
+    padding: 2vw;
+    margin: 1rem;
+    background-color: whitesmoke;
+}
+.payemnt_det .taxes{
+ padding: 1rem;   
+}
+.box{
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.taxes .light span{
+    color: grey;
+    font-size:  0.8rem;
+}
+.sub_head h3{
+    font-size: 1.2rem;
+}
+.checkout_btn{
+    margin-top: 14px;
+    padding: 1vw;
+    background-color: green;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    align-items: center;
+    font-weight: 700;
+    border-radius: 8px;
+    border: 2px solid darkgreen;
+    cursor: pointer;
+}
+.checkout_btn:hover{
+    background-color: lightgreen;
+    color: darkgreen;
+    transform: scale(1.02);
+}
+.checkout_btn:hover .item_count{
+    background-color: greenyellow;
+    color: darkgreen;
+}
+.checkout_btn .item_count{
+    background-color: darkgreen;
+    font-size: 0.8rem;
+    padding: 4px;
+    border: 1px solid green;
+    text-align: center;
+}
+.items_display{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    gap: 1rem;
+    place-items: center;
+}
+.item_containers .heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 2rem 0;
+}
+.heading h1{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.heading hr{
+    flex: 1;
+}
+.item_containers .item-card{
+    border: 1px solid grey;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.item-card .item_pic img{
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+.item-card .item_content{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    height: 100%;
+} 
+.item_content h2{
+    font-size: 1.2rem;
+}
+.item-card .item_content .Desc{
+    color: grey;
+    font-size: 0.8rem;
+}
+.item-card .item_content .choices{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.choices > *{
+    font-size: 0.8rem;
+}
+#size{
+    padding: 0.5rem;
+}
+.add_btn{
+    display: flex;
+    justify-content: space-between;
+    background-color: darkgreen;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid darkgreen;
+}
+.add_btn:hover{
+    background-color: white;
+    transform: scale(1.02);
+    color: black;
+    font-weight: 700;
+}
+
+@media (max-width:750px){
+    .order_main .header{
+        width: 100%;
+    }
+    .side_menu_btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1vw;
+        color: white;
+        padding: 1rem 0.5rem;
+        cursor: pointer;
+        background-color: green;
+        margin: 1vw;
+        text-align: center;
+    }
+    .side_menu_btn:hover{
+        background-color: coral;
+        color:white
+    }
+    .side_menu_btn>*{
+        font-size: 1.2rem;
+    }
+    .basket_platform .close_btn{
+        display: block;
+        align-self: flex-end;
+        margin-right: 1rem;
+        margin-top: -2rem;
+    }
+    .basket_platform .close_btn:hover{
+        transform: rotateZ(90deg);
+        cursor: pointer;
+    }
+    .order_main .display_platform{
+        grid-column: span 2;
+    }
+    .order_main .basket_platform{
+        right: -40%;
+        width: 40%;
+    }
+    .order_main .show{
+        right: 0;
+    }
+    .items_display{
+        grid-template-columns: repeat(auto-fill,minmax(200px,0.8fr));
+        place-items: center;
+        place-content: center;
+    }
+}
+
+@media (max-width:550px) {
+    .side_menu_btn>*{
+        font-size: 0.8rem;
+    }
+    .order_main .basket_platform{
+        right: -70%;
+        width: 70%;
+    }
+    .order_main .show{
+        right: 0;
+    }
+    .order_address{
+        display:none;
+    }
+    .cart-icon{
+        display: none;
+    }
+}
