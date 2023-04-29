@@ -28,11 +28,11 @@ const Checkout = () => {
     if (Name !== "" || re.test(Name)) {
       setName(Name);
       console.log(Mobile);
-      fetch(`https://smiling-erin-sarong.cyclic.app?phone=${Mobile}`).catch(
-        (err) => {
-          console.log(err);
-        }
-      );
+      fetch(
+        `https://smiling-erin-sarong.cyclic.app/sendConfirmMsg?phone=${Mobile}`
+      ).catch((err) => {
+        console.log(err);
+      });
       toast.success("Ordered Successfully!!!");
       setTimeout(() => {
         navigate("/order");
