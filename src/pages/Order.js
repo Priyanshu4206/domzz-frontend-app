@@ -7,6 +7,7 @@ import { ImCross } from "react-icons/im";
 import img1 from "../assests/item1.jpg";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 const Order = () => {
   const [sub_total, setSubTotal] = React.useState(0.0);
   const [total, setTotal] = React.useState(0.0);
@@ -59,6 +60,16 @@ const Order = () => {
       Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, dolorem molestias. Voluptas ut iusto blanditiis aliquam perferendis delectus nam rerum?`,
     },
   ];
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:5000/getData")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const products = [Pizza, Sides, Drinks];
   const [location, setLocation] = React.useState("xxxxx-xxxxxxxxx xxxxxx");
   const [valid, setValid] = React.useState(false);
