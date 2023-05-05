@@ -34,11 +34,11 @@ const Checkout = () => {
     if (Name !== "" || re.test(Name)) {
       setName(Name);
       console.log(Mobile);
-      // fetch(
-      //   `https://smiling-erin-sarong.cyclic.app/sendConfirmMsg?phone=${Mobile}`
-      // ).catch((err) => {
-      //   console.log(err);
-      // });
+      fetch(
+        `https://smiling-erin-sarong.cyclic.app/sendConfirmMsg?phone=${Mobile}`
+      ).catch((err) => {
+        console.log(err);
+      });
       toast.success("Ordered Successfully!!!");
       const Customer_info = {
         Customer_name: Name,
@@ -89,9 +89,9 @@ const Checkout = () => {
   const onSignup = async () => {
     if (Mobile.length >= 13 && Mobile !== undefined) {
       try {
-        // const response = await setUpCaptcha(Mobile);
-        // console.log(response);
-        // setConfirmObj(response);
+        const response = await setUpCaptcha(Mobile);
+        console.log(response);
+        setConfirmObj(response);
         setshowOTP(true);
         toast.success("OTP Sent Sucessfully !!");
       } catch (err) {
@@ -102,9 +102,9 @@ const Checkout = () => {
     }
   };
   const otpVerify = async () => {
-    // if (otp === "" || otp === null) return;
+    if (otp === "" || otp === null) return;
     try {
-      // await confirmObj.confirm(otp);
+      await confirmObj.confirm(otp);
       setVerfied(true);
       toast.success("Verified Successfully !!");
     } catch (error) {
