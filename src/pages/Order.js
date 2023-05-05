@@ -12,65 +12,65 @@ const Order = () => {
   const [sub_total, setSubTotal] = React.useState(0.0);
   const [total, setTotal] = React.useState(0.0);
   const [option, setOption] = React.useState("Pizza");
-  const Pizza = [
-    {
-      id: "P1",
-      Name: "Small Double Panner",
-      Price: 500,
-      Size: "Small",
-      Type: "Veg",
-      Imglink: "../assests/item1.jpg",
-      Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Deserunt, temporibus rem fugit dignissimos qui aliquid
-      quae, facere eligendi ullam quasi dolorem enim laboriosam
-      odio est quas quam, assumenda voluptate delectus.`,
-    },
-    {
-      id: "P2",
-      Name: "Medium Double Cheese",
-      Price: 300,
-      Size: "Medium",
-      Type: "Veg",
-      Imglink: "../assests/item1.jpg",
-      Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Deserunt, temporibus rem fugit dignissimos qui aliquid
-      quae, facere eligendi ullam quasi dolorem enim laboriosam
-      odio est quas quam, assumenda voluptate delectus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, dolorem molestias. Voluptas ut iusto blanditiis aliquam perferendis delectus nam rerum?`,
-    },
-  ];
-  const Drinks = [
-    {
-      id: "D1",
-      Name: "Thumbs Up Cold Drink",
-      Price: 100,
-      Imglink: "../assests/item1.jpg",
-      Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Deserunt, temporibus rem fugit dignissimos qui aliquid
-      quae, facere eligendi ullam quasi dolorem enim laboriosam
-    odio est quas quam, assumenda voluptate delectus.`,
-    },
-  ];
-  const Sides = [
-    {
-      id: "S1",
-      Name: "Burger",
-      Price: 100,
-      Size: "Medium",
-      Imglink: "../assests/item1.jpg",
-      Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, dolorem molestias. Voluptas ut iusto blanditiis aliquam perferendis delectus nam rerum?`,
-    },
-  ];
+  const [products, setProducts] = React.useState([]);
+  // const Pizza = [
+  //   {
+  //     id: "P1",
+  //     P_Name: "Small Double Panner",
+  //     Price: 500,
+  //     Size: "Small",
+  //     P_Type: "Veg",
+  //     Imglink: "../assests/item1.jpg",
+  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  //     Deserunt, temporibus rem fugit dignissimos qui aliquid
+  //     quae, facere eligendi ullam quasi dolorem enim laboriosam
+  //     odio est quas quam, assumenda voluptate delectus.`,
+  //   },
+  //   {
+  //     id: "P2",
+  //     P_Name: "Medium Double Cheese",
+  //     Price: 300,
+  //     Size: "Medium",
+  //     P_Type: "Veg",
+  //     Imglink: "../assests/item1.jpg",
+  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  //     Deserunt, temporibus rem fugit dignissimos qui aliquid
+  //     quae, facere eligendi ullam quasi dolorem enim laboriosam
+  //     odio est quas quam, assumenda voluptate delectus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, dolorem molestias. Voluptas ut iusto blanditiis aliquam perferendis delectus nam rerum?`,
+  //   },
+  // ];
+  // const Drinks = [
+  //   {
+  //     id: "D1",
+  //     P_Name: "Thumbs Up Cold Drink",
+  //     Price: 100,
+  //     Imglink: "../assests/item1.jpg",
+  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  //     Deserunt, temporibus rem fugit dignissimos qui aliquid
+  //     quae, facere eligendi ullam quasi dolorem enim laboriosam
+  //   odio est quas quam, assumenda voluptate delectus.`,
+  //   },
+  // ];
+  // const Sides = [
+  //   {
+  //     id: "S1",
+  //     P_Name: "Burger",
+  //     Price: 100,
+  //     Size: "Medium",
+  //     Imglink: "../assests/item1.jpg",
+  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, dolorem molestias. Voluptas ut iusto blanditiis aliquam perferendis delectus nam rerum?`,
+  //   },
+  // ];
   React.useEffect(() => {
     axios
       .get("http://localhost:5000/getData")
       .then((res) => {
-        console.log(res);
+        setProducts(res.data.Result);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  const products = [Pizza, Sides, Drinks];
   const [location, setLocation] = React.useState("xxxxx-xxxxxxxxx xxxxxx");
   const [valid, setValid] = React.useState(false);
   const [cart_items, setCart] = React.useState([]);
@@ -186,11 +186,11 @@ const Order = () => {
                   return (
                     <div key={item_number} className="item-card">
                       <div className="item_pic">
-                        <img src={img1} alt={item.Name} />
+                        <img src={img1} alt={item.P_Name} />
                       </div>
                       <div className="item_content">
-                        <h2>{item.Name}</h2>
-                        <p className="Desc">{item.Desc}</p>
+                        <h2>{item.P_Name}</h2>
+                        <p className="P_Desc">{item.P_Desc}</p>
                         <div
                           className="choices"
                           style={
@@ -233,7 +233,7 @@ const Order = () => {
             return (
               <li key={index}>
                 <span className="title">
-                  <strong> {item.Name}</strong>
+                  <strong> {item.P_Name}</strong>
                   <br />
                   {item.Size}
                 </span>

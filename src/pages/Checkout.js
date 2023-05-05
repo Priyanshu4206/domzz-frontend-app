@@ -11,7 +11,13 @@ import "../stylings/checkout.css";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../firebase/firebase_config";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const Checkout = () => {
+  const date = new Date();
+  let currentDay = String(date.getDate()).padStart(2, "0");
+  let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
+  let currentYear = date.getFullYear();
+  let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
   const [verfied, setVerfied] = React.useState(false);
   const [showOTP, setshowOTP] = React.useState(false);
   const [otp, setOtp] = React.useState("");
@@ -28,12 +34,45 @@ const Checkout = () => {
     if (Name !== "" || re.test(Name)) {
       setName(Name);
       console.log(Mobile);
-      fetch(
-        `https://smiling-erin-sarong.cyclic.app/sendConfirmMsg?phone=${Mobile}`
-      ).catch((err) => {
-        console.log(err);
-      });
+      // fetch(
+      //   `https://smiling-erin-sarong.cyclic.app/sendConfirmMsg?phone=${Mobile}`
+      // ).catch((err) => {
+      //   console.log(err);
+      // });
       toast.success("Ordered Successfully!!!");
+      const Customer_info = {
+        Customer_name: Name,
+        Customer_ph_no: Mobile,
+        Customer_email_id: Email,
+        Customer_location: location,
+      };
+      const Order_info = {
+        Order_id: "",
+        Customer_id: "",
+        Trans_id: "",
+        Product_id: "",
+        Order_date: currentDate,
+        Total: amount,
+        Pay_mode: "POD",
+      };
+      const Trans_info = {
+        Trans_id: "",
+        Pay_mode: "POD",
+        Confirmation: true,
+      };
+      try {
+        axios
+          .post("http://localhost:5000/setData", {
+            Customer_info,
+            Trans_info,
+            Order_info,
+          })
+          .catch((err) => {
+            console.log("SQL Error !!!");
+          });
+      } catch (e) {
+        console.log(e);
+      }
       setTimeout(() => {
         navigate("/order");
       }, 4000);
@@ -50,9 +89,9 @@ const Checkout = () => {
   const onSignup = async () => {
     if (Mobile.length >= 13 && Mobile !== undefined) {
       try {
-        const response = await setUpCaptcha(Mobile);
-        console.log(response);
-        setConfirmObj(response);
+        // const response = await setUpCaptcha(Mobile);
+        // console.log(response);
+        // setConfirmObj(response);
         setshowOTP(true);
         toast.success("OTP Sent Sucessfully !!");
       } catch (err) {
@@ -63,9 +102,9 @@ const Checkout = () => {
     }
   };
   const otpVerify = async () => {
-    if (otp === "" || otp === null) return;
+    // if (otp === "" || otp === null) return;
     try {
-      await confirmObj.confirm(otp);
+      // await confirmObj.confirm(otp);
       setVerfied(true);
       toast.success("Verified Successfully !!");
     } catch (error) {
