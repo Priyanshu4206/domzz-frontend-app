@@ -1,7 +1,6 @@
 
 .checkout_main{
     width: 100%;
-    /* background-color: black; */
     min-height: 100vh;
 }
 .logo{
@@ -156,18 +155,3 @@ label .pay_pics{
     font-size: 1.2rem;
 }
 }
-
-
-/* const appVerifier = window.recaptchaVerifier;
-firebase
-  .auth()
-  .signInWithPhoneNumber(Mobile, appVerifier)
-  .then((value) => {
-    setConfirmResult(value);
-    setshowOTP(true);
-    toast.success("OTP sent Succesfully !!!");
-  })
-  .catch((err) => {
-    console.log(err);
-    setshowOTP(false);
-  }); */

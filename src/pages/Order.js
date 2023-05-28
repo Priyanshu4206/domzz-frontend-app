@@ -4,7 +4,6 @@ import logo from "../assests/logo.svg";
 import { MdLocationOn } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
-import img1 from "../assests/item1.jpg";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
@@ -13,62 +12,15 @@ const Order = () => {
   const [total, setTotal] = React.useState(0.0);
   const [option, setOption] = React.useState("Pizza");
   const [products, setProducts] = React.useState([]);
-  // const Pizza = [
-  //   {
-  //     id: "P1",
-  //     P_Name: "Small Double Panner",
-  //     Price: 500,
-  //     Size: "Small",
-  //     P_Type: "Veg",
-  //     Imglink: "../assests/item1.jpg",
-  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  //     Deserunt, temporibus rem fugit dignissimos qui aliquid
-  //     quae, facere eligendi ullam quasi dolorem enim laboriosam
-  //     odio est quas quam, assumenda voluptate delectus.`,
-  //   },
-  //   {
-  //     id: "P2",
-  //     P_Name: "Medium Double Cheese",
-  //     Price: 300,
-  //     Size: "Medium",
-  //     P_Type: "Veg",
-  //     Imglink: "../assests/item1.jpg",
-  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  //     Deserunt, temporibus rem fugit dignissimos qui aliquid
-  //     quae, facere eligendi ullam quasi dolorem enim laboriosam
-  //     odio est quas quam, assumenda voluptate delectus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, dolorem molestias. Voluptas ut iusto blanditiis aliquam perferendis delectus nam rerum?`,
-  //   },
-  // ];
-  // const Drinks = [
-  //   {
-  //     id: "D1",
-  //     P_Name: "Thumbs Up Cold Drink",
-  //     Price: 100,
-  //     Imglink: "../assests/item1.jpg",
-  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  //     Deserunt, temporibus rem fugit dignissimos qui aliquid
-  //     quae, facere eligendi ullam quasi dolorem enim laboriosam
-  //   odio est quas quam, assumenda voluptate delectus.`,
-  //   },
-  // ];
-  // const Sides = [
-  //   {
-  //     id: "S1",
-  //     P_Name: "Burger",
-  //     Price: 100,
-  //     Size: "Medium",
-  //     Imglink: "../assests/item1.jpg",
-  //     P_Desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, dolorem molestias. Voluptas ut iusto blanditiis aliquam perferendis delectus nam rerum?`,
-  //   },
-  // ];
   React.useEffect(() => {
     axios
       .get("http://localhost:5000/getData")
       .then((res) => {
         setProducts(res.data.Result);
+        console.log(res.data.Result);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err.message);
       });
   }, []);
   const [location, setLocation] = React.useState("xxxxx-xxxxxxxxx xxxxxx");
@@ -186,7 +138,7 @@ const Order = () => {
                   return (
                     <div key={item_number} className="item-card">
                       <div className="item_pic">
-                        <img src={img1} alt={item.P_Name} />
+                        <img src={item.Imglink} alt={item.P_Name} />
                       </div>
                       <div className="item_content">
                         <h2>{item.P_Name}</h2>

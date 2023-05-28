@@ -33,13 +33,6 @@ const Checkout = () => {
     const re = /^[A-Za-z]+$/;
     if (Name !== "" || re.test(Name)) {
       setName(Name);
-      console.log(Mobile);
-      fetch(
-        `https://smiling-erin-sarong.cyclic.app/sendConfirmMsg?phone=${Mobile}`
-      ).catch((err) => {
-        console.log(err);
-      });
-      toast.success("Ordered Successfully!!!");
       const Customer_info = {
         Customer_name: Name,
         Customer_ph_no: Mobile,
@@ -60,22 +53,29 @@ const Checkout = () => {
         Pay_mode: "POD",
         Confirmation: true,
       };
-      try {
-        axios
-          .post("http://localhost:5000/setData", {
-            Customer_info,
-            Trans_info,
-            Order_info,
-          })
-          .catch((err) => {
-            console.log("SQL Error !!!");
-          });
-      } catch (e) {
-        console.log(e);
-      }
-      setTimeout(() => {
-        navigate("/order");
-      }, 4000);
+      axios
+        .post("http://localhost:5000/setData", {
+          Customer_info,
+          Trans_info,
+          Order_info,
+        })
+        .then((res) => {
+          toast.success(res.data.Result);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+      axios
+        .get(`http://localhost:5000/sendConfirmMsg?phone=${Mobile}`)
+        .then((res) => {
+          console.log(res.data.Result);
+          setTimeout(() => {
+            navigate("/order");
+          }, 5000);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       toast.error("Enter a Valid Name");
       return;
@@ -90,7 +90,6 @@ const Checkout = () => {
     if (Mobile.length >= 13 && Mobile !== undefined) {
       try {
         const response = await setUpCaptcha(Mobile);
-        console.log(response);
         setConfirmObj(response);
         setshowOTP(true);
         toast.success("OTP Sent Sucessfully !!");
